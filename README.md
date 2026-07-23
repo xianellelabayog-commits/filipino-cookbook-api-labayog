@@ -677,10 +677,7 @@ Successfully deletes the selected food record from the database.
 > xianellelabayog-commits
 
 **Repository Link:**
-
-```
-https://github.com/YOUR_USERNAME/filipino-cookbook-api
-```
+> https://github.com/xianellelabayog-commits/filipino-cookbook-api-labayog.git
 
 **Date Completed**
 
