@@ -668,19 +668,13 @@ Successfully deletes the selected food record from the database.
 # 12. Developer Information
 
 **Student Name:**
-> YOUR NAME
+> Xianelle Jodi G. Labayog
 
 **Course and Section:**
-> BS Information Technology
-
-**Subject:**
-> API Development
-
-**Instructor:**
-> _______________________
+> Bachelor of Science in Information Technology 4C
 
 **GitHub Username:**
-> YOUR_GITHUB_USERNAME
+> xianellelabayog-commits
 
 **Repository Link:**
 
@@ -691,7 +685,7 @@ https://github.com/YOUR_USERNAME/filipino-cookbook-api
 **Date Completed**
 
 ```
-July 2026
+July 23, 2026
 ```
 
 ---
