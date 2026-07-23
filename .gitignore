@@ -1,0 +1,12 @@
+vendor/
+node_modules/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.log
+.DS_Store
+.phpunit.result.cache
