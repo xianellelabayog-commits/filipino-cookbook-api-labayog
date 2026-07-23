@@ -459,25 +459,97 @@ Success Response
 
 # 11. Testing Evidence
 
-Include screenshots for the following:
+The following screenshots demonstrate the successful testing of the Filipino Cookbook API using Thunder Client.
 
-- ✅ Welcome Route
-- ✅ Get All Foods
-- ✅ Get Food by ID
-- ✅ Search Food
-- ✅ Categories
-- ✅ Ingredients
-- ✅ POST Request
-- ✅ PUT Request
-- ✅ DELETE Request
-- ✅ Invalid Token
-- ✅ Missing Token
-- ✅ Food Not Found
-- ✅ Search Not Found
+---
 
-Each screenshot should include a short caption.
+## A1. Welcome Route
 
-Example:
+Returns the welcome message from the public endpoint.
+
+![A1 - Welcome Route](screenshots/A1.png)
+
+---
+
+## A2. Get All Foods
+
+Successfully retrieves all Filipino food records from the database.
+
+![A2 - Get All Foods](screenshots/A2.png)
+
+---
+
+## A3. Get Food by ID
+
+Successfully retrieves a specific Filipino food using its unique ID.
+
+![A3 - Get Food by ID](screenshots/A3.png)
+
+---
+
+## A4. Search Food
+
+Successfully searches for a Filipino dish using its name.
+
+![A4 - Search Food](screenshots/A4.png)
+
+---
+
+## A5. Get Categories
+
+Displays all available food categories.
+
+![A5 - Get Categories](screenshots/A5.png)
+
+---
+
+## A6. Get Ingredients
+
+Displays all available ingredients stored in the database.
+
+![A6 - Get Ingredients](screenshots/A6.png)
+
+---
+
+## A7. Add New Food (POST)
+
+Successfully adds a new Filipino food record to the database.
+
+![A7 - Add New Food](screenshots/A7.png)
+
+---
+
+## A8. Update Food (PUT)
+
+Successfully updates an existing Filipino food record.
+
+![A8 - Update Food](screenshots/A8.png)
+
+---
+
+## A9. Delete Food (DELETE)
+
+Successfully deletes the selected Filipino food record.
+
+![A9 - Delete Food](screenshots/A9.png)
+
+---
+
+## A10. Invalid or Missing Token
+
+Shows the authentication error returned when an invalid or missing Bearer Token is used.
+
+![A10 - Authentication Error](screenshots/A10.png)
+
+---
+
+## A11. Resource Not Found
+
+Demonstrates the API response when a requested food record or search result does not exist.
+
+![A11 - Resource Not Found](screenshots/A11.png)
+
+---
 
 **Figure 1. Successful retrieval of all Filipino foods using the GET /api/foods endpoint.**
 
