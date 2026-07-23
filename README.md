@@ -2,6 +2,10 @@
 
 A secured RESTful API developed using the **Slim Framework** that provides information about traditional Filipino dishes, their categories, origins, and ingredients. The API supports CRUD (Create, Read, Update, Delete) operations and protects all API endpoints using Bearer Token Authentication.
 
+> **Security Notice**
+>
+> This repository does **not** include real database passwords, authentication tokens, API keys, personal access tokens, or server credentials. Sensitive configuration values have been replaced with placeholders to follow secure development practices.
+
 ---
 
 # 1. API Title
@@ -15,11 +19,13 @@ A secured RESTful API developed using the **Slim Framework** that provides infor
 The Filipino Cookbook API is a RESTful web service that allows users to access and manage information about Filipino foods. It provides structured JSON responses and uses token-based authentication to secure all API endpoints.
 
 ### Purpose of the API
+
 - Provide a centralized database of Filipino dishes.
 - Demonstrate REST API development using PHP and Slim Framework.
 - Practice CRUD operations with secured API endpoints.
 
 ### Type of Information Provided
+
 - Filipino foods
 - Food categories
 - Food origins
@@ -27,11 +33,13 @@ The Filipino Cookbook API is a RESTful web service that allows users to access a
 - Cooking instructions
 
 ### Intended Users
+
 - Students learning REST API Development
 - Developers integrating Filipino food information
 - Instructors and evaluators
 
 ### Main Functions
+
 - Retrieve all Filipino foods
 - Search foods by name
 - Retrieve a specific food
@@ -44,6 +52,7 @@ The Filipino Cookbook API is a RESTful web service that allows users to access a
 - Return responses in JSON format
 
 ### Technologies Used
+
 - PHP
 - Slim Framework
 - MySQL
@@ -94,13 +103,13 @@ The Filipino Cookbook API is a RESTful web service that allows users to access a
 ## Step 1. Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/filipino-cookbook-api.git
+git clone https://github.com/xianellelabayog-commits/filipino-cookbook-api-labayog.git
 ```
 
 ## Step 2. Open Project
 
 ```bash
-cd filipino-cookbook-api
+cd filipino-cookbook-api-labayog
 ```
 
 ## Step 3. Install Dependencies
@@ -113,7 +122,7 @@ composer install
 
 Import the provided SQL file into MySQL.
 
-Database Name
+**Database Name**
 
 ```
 filipino_cookbook_api
@@ -121,34 +130,28 @@ filipino_cookbook_api
 
 ## Step 5. Configure Database
 
-Open:
+Create a local configuration file or use environment variables to store your database credentials.
 
-```
-public/index.php
-```
+Example:
 
-Modify the database credentials if needed or configure environment variables:
-
-```
+```env
 DB_HOST=localhost
-DB_NAME=filipino_cookbook_api
-DB_USER=root
-DB_PASS=
+DB_NAME=your_database_name
+DB_USER=your_database_username
+DB_PASS=your_database_password
 ```
 
-If you use XAMPP with the default MySQL setup, `root` and an empty password usually work.
+> **Important:** Do **not** upload configuration files containing real credentials to GitHub.
 
 ## Step 6. Start Local Server
 
-Open Terminal
-
 ```bash
-cd C:\filipino-cookbook-api
+cd C:\xampp\htdocs\filipino-cookbook-api-labayog
 
-& "C:\xampp\php\php.exe" -S localhost:8000 -t public
+php -S localhost:8000 -t public
 ```
 
-The API will run at
+The API will be available at:
 
 ```
 http://localhost:8000
@@ -203,28 +206,24 @@ http://localhost:8000/api
 
 # 8. Authentication
 
-All API endpoints require a Bearer Token except the Welcome Route.
+All `/api` endpoints require a valid Bearer Token except the Welcome Route.
 
-## Token
+### Required Headers
 
-```
-dmmmsu-cookbook-token-2026
-```
-
-## Header
-
-```
-Authorization: Bearer dmmmsu-cookbook-token-2026
+```http
+Authorization: Bearer YOUR_API_TOKEN
 Accept: application/json
 Content-Type: application/json
 ```
 
-If the token is missing or invalid, the API returns:
+> **Security Notice:** The actual Bearer Token used during development is intentionally excluded from this repository. Configure your own token locally or store it securely using environment variables.
+
+If authentication fails, the API returns:
 
 ```json
 {
-    "status":"error",
-    "message":"Unauthorized access. Valid API token is required."
+    "status": "error",
+    "message": "Unauthorized access."
 }
 ```
 
@@ -232,23 +231,19 @@ If the token is missing or invalid, the API returns:
 
 # 9. Endpoint Documentation
 
----
-
 ## 1. Welcome Route
 
 ### GET /
 
-Description
+Returns the public welcome message.
 
-Returns the welcome message.
-
-Request
+**Request**
 
 ```
 GET http://localhost:8000/
 ```
 
-Response
+**Response**
 
 ```json
 {
@@ -263,13 +258,13 @@ Response
 
 ### GET /api/foods
 
-Headers
+**Headers**
 
 ```
-Authorization: Bearer dmmmsu-cookbook-token-2026
+Authorization: Bearer YOUR_API_TOKEN
 ```
 
-Request
+**Request**
 
 ```
 GET http://localhost:8000/api/foods
@@ -281,19 +276,19 @@ GET http://localhost:8000/api/foods
 
 ### GET /api/foods/{id}
 
-Existing
+**Existing**
 
 ```
 GET http://localhost:8000/api/foods/2
 ```
 
-Non-existing
+**Non-existing**
 
 ```
 GET http://localhost:8000/api/foods/55
 ```
 
-404 Response
+**404 Response**
 
 ```json
 {
@@ -308,19 +303,19 @@ GET http://localhost:8000/api/foods/55
 
 ### GET /api/foods/search/{name}
 
-Existing
+**Existing**
 
 ```
 GET http://localhost:8000/api/foods/search/adobo
 ```
 
-Non-existing
+**Non-existing**
 
 ```
 GET http://localhost:8000/api/foods/search/curry
 ```
 
-404 Response
+**404 Response**
 
 ```json
 {
@@ -335,8 +330,6 @@ GET http://localhost:8000/api/foods/search/curry
 
 ### GET /api/categories
 
-Request
-
 ```
 GET http://localhost:8000/api/categories
 ```
@@ -346,8 +339,6 @@ GET http://localhost:8000/api/categories
 ## 6. Get Ingredients
 
 ### GET /api/ingredients
-
-Request
 
 ```
 GET http://localhost:8000/api/ingredients
@@ -359,13 +350,11 @@ GET http://localhost:8000/api/ingredients
 
 ### POST /api/foods
 
-Request
-
 ```
 POST http://localhost:8000/api/foods
 ```
 
-Body
+**Body**
 
 ```json
 {
@@ -377,7 +366,7 @@ Body
 }
 ```
 
-Success Response
+**Success Response**
 
 ```json
 {
@@ -392,13 +381,11 @@ Success Response
 
 ### PUT /api/foods/{id}
 
-Request
-
 ```
 PUT http://localhost:8000/api/foods/16
 ```
 
-Body
+**Body**
 
 ```json
 {
@@ -410,7 +397,7 @@ Body
 }
 ```
 
-Success Response
+**Success Response**
 
 ```json
 {
@@ -425,13 +412,11 @@ Success Response
 
 ### DELETE /api/foods/{id}
 
-Request
-
 ```
 DELETE http://localhost:8000/api/foods/16
 ```
 
-Success Response
+**Success Response**
 
 ```json
 {
@@ -459,9 +444,7 @@ Success Response
 
 # 11. Testing Evidence
 
-The following screenshots present the testing results of the Filipino Cookbook API using Thunder Client. Each test verifies the functionality of a specific API endpoint and its corresponding response.
-
----
+The following screenshots present the testing results of the Filipino Cookbook API using Thunder Client.
 
 ## A1. Public Welcome Route
 
@@ -471,135 +454,101 @@ The following screenshots present the testing results of the Filipino Cookbook A
 GET http://localhost:8000/
 ```
 
-Returns the public welcome message of the API.
-
 <p align="center">
-  <img src="screenshots/A1.png" alt="Public Welcome Route" width="900">
+<img src="screenshots/A1.png" width="900">
 </p>
 
 ---
 
 ## A2. Get All Foods
 
-**Endpoint**
-
 ```
 GET http://localhost:8000/api/foods
 ```
 
-Retrieves all available Filipino food records.
-
 <p align="center">
-  <img src="screenshots/A2.png" alt="Get All Foods" width="900">
+<img src="screenshots/A2.png" width="900">
 </p>
 
 ---
 
 ## A3. Get Food by ID (Existing)
 
-**Endpoint**
-
 ```
 GET http://localhost:8000/api/foods/2
 ```
 
-Successfully retrieves the food record with ID **2**.
-
 <p align="center">
-  <img src="screenshots/A3.png" alt="Get Food by ID" width="900">
+<img src="screenshots/A3.png" width="900">
 </p>
 
 ---
 
 ## A4. Get Food by ID (Non-Existing)
 
-**Endpoint**
-
 ```
 GET http://localhost:8000/api/foods/55
 ```
 
-Returns a **404 Not Found** response because the requested food does not exist.
-
 <p align="center">
-  <img src="screenshots/A4.png" alt="Food Not Found" width="900">
+<img src="screenshots/A4.png" width="900">
 </p>
 
 ---
 
 ## A5. Search Food by Name (Existing)
 
-**Endpoint**
-
 ```
 GET http://localhost:8000/api/foods/search/adobo
 ```
 
-Successfully searches and returns the food named **Adobo**.
-
 <p align="center">
-  <img src="screenshots/A5.png" alt="Search Existing Food" width="900">
+<img src="screenshots/A5.png" width="900">
 </p>
 
 ---
 
 ## A6. Search Food by Name (Non-Existing)
 
-**Endpoint**
-
 ```
 GET http://localhost:8000/api/foods/search/curry
 ```
 
-Returns a **404 Not Found** response because no matching food exists.
-
 <p align="center">
-  <img src="screenshots/A6.png" alt="Search Food Not Found" width="900">
+<img src="screenshots/A6.png" width="900">
 </p>
 
 ---
 
 ## A7. Get All Categories
 
-**Endpoint**
-
 ```
 GET http://localhost:8000/api/categories
 ```
 
-Displays all available Filipino food categories.
-
 <p align="center">
-  <img src="screenshots/A7.png" alt="Get Categories" width="900">
+<img src="screenshots/A7.png" width="900">
 </p>
 
 ---
 
 ## A8. Get All Ingredients
 
-**Endpoint**
-
 ```
 GET http://localhost:8000/api/ingredients
 ```
 
-Displays all available food ingredients.
-
 <p align="center">
-  <img src="screenshots/A8.png" alt="Get Ingredients" width="900">
+<img src="screenshots/A8.png" width="900">
 </p>
 
 ---
 
 ## A9. Create New Food (POST)
 
-**Endpoint**
-
 ```
 POST http://localhost:8000/api/foods
 ```
-
-**Request Body**
 
 ```json
 {
@@ -611,23 +560,17 @@ POST http://localhost:8000/api/foods
 }
 ```
 
-Successfully creates a new Filipino food record.
-
 <p align="center">
-  <img src="screenshots/A9.png" alt="Create New Food" width="900">
+<img src="screenshots/A9.png" width="900">
 </p>
 
 ---
 
 ## A10. Update Existing Food (PUT)
 
-**Endpoint**
-
 ```
 PUT http://localhost:8000/api/foods/16
 ```
-
-**Request Body**
 
 ```json
 {
@@ -639,45 +582,67 @@ PUT http://localhost:8000/api/foods/16
 }
 ```
 
-After updating, a **GET** request confirms that the modified food information has been successfully saved.
-
 <p align="center">
-  <img src="screenshots/A10.png" alt="Update Food" width="900">
+<img src="screenshots/A10.png" width="900">
 </p>
 
 ---
 
 ## A11. Delete Food (DELETE)
 
-**Endpoint**
-
 ```
 DELETE http://localhost:8000/api/foods/16
 ```
 
-Successfully deletes the selected food record from the database.
-
 <p align="center">
-  <img src="screenshots/A11.png" alt="Delete Food" width="900">
+<img src="screenshots/A11.png" width="900">
 </p>
 
 ---
 
+# 12. Security
+
+This project follows secure development practices.
+
+The repository **does not include**:
+
+- Database passwords
+- Private API keys
+- Bearer authentication tokens
+- Personal access tokens
+- Server credentials
+- Environment configuration files
+
+Create your own local configuration (for example, a `.env` file) and ensure it is added to `.gitignore` before pushing your project to GitHub.
+
+Example `.gitignore` entries:
+
+```gitignore
+.env
+.env.local
+config.php
+settings.php
+```
+
 ---
 
-# 12. Developer Information
+# 13. Developer Information
 
-**Student Name:**
+**Student Name**
+
 > Xianelle Jodi G. Labayog
 
-**Course and Section:**
+**Course and Section**
+
 > Bachelor of Science in Information Technology 4C
 
-**GitHub Username:**
+**GitHub Username**
+
 > xianellelabayog-commits
 
-**Repository Link:**
-> https://github.com/xianellelabayog-commits/filipino-cookbook-api-labayog.git
+**Repository**
+
+https://github.com/xianellelabayog-commits/filipino-cookbook-api-labayog
 
 **Date Completed**
 
@@ -689,4 +654,4 @@ July 23, 2026
 
 # License
 
-This project was developed for educational purposes as part of the API Development Laboratory Activity using the Slim Framework.
+This project was developed for educational purposes as part of the REST API Development Laboratory Activity using the Slim Framework.
