@@ -459,99 +459,209 @@ Success Response
 
 # 11. Testing Evidence
 
-The following screenshots demonstrate the successful testing of the Filipino Cookbook API using Thunder Client.
+The following screenshots present the testing results of the Filipino Cookbook API using Thunder Client. Each test verifies the functionality of a specific API endpoint and its corresponding response.
 
 ---
 
-## A1. Welcome Route
+## A1. Public Welcome Route
 
-Returns the welcome message from the public endpoint.
+**Endpoint**
 
-![A1 - Welcome Route](screenshots/A1.png)
+```
+GET http://localhost:8000/
+```
+
+Returns the public welcome message of the API.
+
+<p align="center">
+  <img src="screenshots/A1.png" alt="Public Welcome Route" width="900">
+</p>
 
 ---
 
 ## A2. Get All Foods
 
-Successfully retrieves all Filipino food records from the database.
+**Endpoint**
 
-![A2 - Get All Foods](screenshots/A2.png)
+```
+GET http://localhost:8000/api/foods
+```
 
----
+Retrieves all available Filipino food records.
 
-## A3. Get Food by ID
-
-Successfully retrieves a specific Filipino food using its unique ID.
-
-![A3 - Get Food by ID](screenshots/A3.png)
-
----
-
-## A4. Search Food
-
-Successfully searches for a Filipino dish using its name.
-
-![A4 - Search Food](screenshots/A4.png)
+<p align="center">
+  <img src="screenshots/A2.png" alt="Get All Foods" width="900">
+</p>
 
 ---
 
-## A5. Get Categories
+## A3. Get Food by ID (Existing)
 
-Displays all available food categories.
+**Endpoint**
 
-![A5 - Get Categories](screenshots/A5.png)
+```
+GET http://localhost:8000/api/foods/2
+```
 
----
+Successfully retrieves the food record with ID **2**.
 
-## A6. Get Ingredients
-
-Displays all available ingredients stored in the database.
-
-![A6 - Get Ingredients](screenshots/A6.png)
-
----
-
-## A7. Add New Food (POST)
-
-Successfully adds a new Filipino food record to the database.
-
-![A7 - Add New Food](screenshots/A7.png)
+<p align="center">
+  <img src="screenshots/A3.png" alt="Get Food by ID" width="900">
+</p>
 
 ---
 
-## A8. Update Food (PUT)
+## A4. Get Food by ID (Non-Existing)
 
-Successfully updates an existing Filipino food record.
+**Endpoint**
 
-![A8 - Update Food](screenshots/A8.png)
+```
+GET http://localhost:8000/api/foods/55
+```
 
----
+Returns a **404 Not Found** response because the requested food does not exist.
 
-## A9. Delete Food (DELETE)
-
-Successfully deletes the selected Filipino food record.
-
-![A9 - Delete Food](screenshots/A9.png)
-
----
-
-## A10. Invalid or Missing Token
-
-Shows the authentication error returned when an invalid or missing Bearer Token is used.
-
-![A10 - Authentication Error](screenshots/A10.png)
+<p align="center">
+  <img src="screenshots/A4.png" alt="Food Not Found" width="900">
+</p>
 
 ---
 
-## A11. Resource Not Found
+## A5. Search Food by Name (Existing)
 
-Demonstrates the API response when a requested food record or search result does not exist.
+**Endpoint**
 
-![A11 - Resource Not Found](screenshots/A11.png)
+```
+GET http://localhost:8000/api/foods/search/adobo
+```
+
+Successfully searches and returns the food named **Adobo**.
+
+<p align="center">
+  <img src="screenshots/A5.png" alt="Search Existing Food" width="900">
+</p>
 
 ---
 
-**Figure 1. Successful retrieval of all Filipino foods using the GET /api/foods endpoint.**
+## A6. Search Food by Name (Non-Existing)
+
+**Endpoint**
+
+```
+GET http://localhost:8000/api/foods/search/curry
+```
+
+Returns a **404 Not Found** response because no matching food exists.
+
+<p align="center">
+  <img src="screenshots/A6.png" alt="Search Food Not Found" width="900">
+</p>
+
+---
+
+## A7. Get All Categories
+
+**Endpoint**
+
+```
+GET http://localhost:8000/api/categories
+```
+
+Displays all available Filipino food categories.
+
+<p align="center">
+  <img src="screenshots/A7.png" alt="Get Categories" width="900">
+</p>
+
+---
+
+## A8. Get All Ingredients
+
+**Endpoint**
+
+```
+GET http://localhost:8000/api/ingredients
+```
+
+Displays all available food ingredients.
+
+<p align="center">
+  <img src="screenshots/A8.png" alt="Get Ingredients" width="900">
+</p>
+
+---
+
+## A9. Create New Food (POST)
+
+**Endpoint**
+
+```
+POST http://localhost:8000/api/foods
+```
+
+**Request Body**
+
+```json
+{
+  "food_name": "Dinengdeng",
+  "category_id": 3,
+  "origin_id": 4,
+  "instructions": "Boil vegetables with bagoong-based broth and add grilled fish before serving.",
+  "ingredient_ids": [10, 15, 22]
+}
+```
+
+Successfully creates a new Filipino food record.
+
+<p align="center">
+  <img src="screenshots/A9.png" alt="Create New Food" width="900">
+</p>
+
+---
+
+## A10. Update Existing Food (PUT)
+
+**Endpoint**
+
+```
+PUT http://localhost:8000/api/foods/16
+```
+
+**Request Body**
+
+```json
+{
+  "food_name": "Dinengdeng Ilocano",
+  "category_id": 3,
+  "origin_id": 4,
+  "instructions": "Cook the vegetables in bagoong broth and serve with grilled fish.",
+  "ingredient_ids": [10, 15, 22]
+}
+```
+
+After updating, a **GET** request confirms that the modified food information has been successfully saved.
+
+<p align="center">
+  <img src="screenshots/A10.png" alt="Update Food" width="900">
+</p>
+
+---
+
+## A11. Delete Food (DELETE)
+
+**Endpoint**
+
+```
+DELETE http://localhost:8000/api/foods/16
+```
+
+Successfully deletes the selected food record from the database.
+
+<p align="center">
+  <img src="screenshots/A11.png" alt="Delete Food" width="900">
+</p>
+
+---
 
 ---
 
